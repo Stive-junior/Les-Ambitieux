@@ -1,0 +1,96 @@
+{
+    "courses": [
+        {
+            "id": 1,
+            "title": "Mathématiques",
+            "description": "Cours complet pour maîtriser les concepts fondamentaux des mathématiques, du calcul de base à l'algèbre avancée.",
+            "level": "Primaire et Secondaire"
+        },
+        {
+            "id": 2,
+            "title": "Physique-Chimie",
+            "description": "Explorez les lois de la physique et les principes de la chimie avec des cours pratiques et théoriques.",
+            "level": "Secondaire"
+        },
+        {
+            "id": 3,
+            "title": "Français",
+            "description": "Améliorez votre maîtrise de la langue française, grammaire, orthographe, et expression écrite/orale.",
+            "level": "Primaire et Secondaire"
+        },
+        {
+            "id": 4,
+            "title": "Anglais",
+            "description": "Apprenez l'anglais avec des cours adaptés pour débutants et avancés, axés sur la conversation et la grammaire.",
+            "level": "Primaire et Secondaire"
+        },
+        {
+            "id": 5,
+            "title": "Sciences",
+            "description": "Découvrez les sciences naturelles et les concepts clés pour réussir vos examens.",
+            "level": "Primaire"
+        },
+        {
+            "id": 6,
+            "title": "Histoire-Géographie",
+            "description": "Plongez dans l'histoire mondiale et la géographie pour une compréhension approfondie des événements et des lieux.",
+            "level": "Secondaire"
+        },
+        {
+            "id": 7,
+            "title": "Informatique",
+            "description": "Apprenez les bases de la programmation, des algorithmes et de l'utilisation des outils numériques.",
+            "level": "Secondaire"
+        }
+    ],
+    "tutors": [
+        {
+            "id": 1,
+            "name": "Dr. Jean Ngu",
+            "bio": "Docteur en mathématiques avec 10 ans d'expérience dans l'enseignement.",
+            "image": "tutor1.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Mme. Marie Etonde",
+            "bio": "Professeure de français certifiée, passionnée par la langue et la littérature.",
+            "image": "tutor2.jpg"
+        },
+        {
+            "id": 3,
+            "name": "M. Paul Tagne",
+            "bio": "Expert en physique-chimie avec 8 ans d'expérience dans l'accompagnement des élèves du secondaire.",
+            "image": "tutor3.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Mme. Amina Ndongo",
+            "bio": "Enseignante d'anglais bilingue, spécialisée dans la préparation aux examens internationaux.",
+            "image": "tutor4.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Dr. Sophie Mballa",
+            "bio": "Docteure en sciences de l'éducation, experte en pédagogie innovante.",
+            "image": "tutor5.jpg"
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "city": "Yaoundé",
+            "address": "Rue Melen, face au Lycée Général Leclerc",
+            "coordinates": [3.8480, 11.5021],
+            "phone": "+237 123 456 789",
+            "hours": "Lundi-Samedi: 8h-18h"
+        },
+        {
+            "id": 2,
+            "city": "Douala",
+            "address": "Bonapriso, près de l’Hôpital Général",
+            "coordinates": [4.0511, 9.7679],
+            "phone": "+237 987 654 321",
+            "hours": "Lundi-Samedi: 8h-18h"
+        }
+    ]
+}

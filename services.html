@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nos services chez Les Ambitieux - Cours personnalisés, en groupe et à domicile pour élèves du primaire et du secondaire à Yaoundé et Douala.">
+    <title>Nos Services - Les Ambitieux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased gradient-bg">
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg" class="matrix-bg"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-dark/80 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="hexagon w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 glow">
+                        <svg class="w-8 h-8 text-white relative top-2 left-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gradient">Les Ambitieux</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-home"></i> Accueil</a>
+                    <a href="services.html" class="nav-link text-white font-medium relative after:absolute after:w-0 after:h-0.5 after:bg-indigo-400 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"><i class="fas fa-concierge-bell"></i> Services</a>
+                    <a href="tutors.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a>
+                    <a href="locations.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-map-marker-alt"></i> Lieux</a>
+                    <a href="courses.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-book-open"></i> Cours</a>
+                    <a href="pricing.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-tags"></i> Tarifs</a>
+                    <a href="about.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-info-circle"></i> À propos</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/+237123456789" class="hidden md:block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-300 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden flex-col grid grid-cols-3 mt-4 space-y-4 bg-slate-900/95 p-4 rounded-lg backdrop-blur-md">
+                <a href="index.html" class="text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-home"></i> Accueil</a>
+                <a href="services.html" class="text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-concierge-bell"></i> Services</a>
+                <a href="tutors.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a>
+                <a href="locations.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-map-marker-alt"></i> Lieux</a>
+                <a href="courses.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-book-open"></i> Cours</a>
+                <a href="pricing.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-tags"></i> Tarifs</a>
+                <a href="about.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="https://wa.me/+237123456789" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 grid-pattern opacity-10"></div>
+        <div id="particles-container" class="absolute inset-0 overflow-hidden"></div>
+        <div class="container mx-auto px-6 py-20 text-center z-10" data-aos="fade-up" data-aos-duration="1500">
+            <div class="inline-flex items-center bg-indigo-900/30 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-indigo-600/30">
+                <span class="h-2 w-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
+                <span class="text-sm text-indigo-300">Solutions éducatives personnalisées</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span class="text-gradient block">Nos Services</span>
+                <span class="block mt-2 text-white text-3xl md:text-5xl font-medium">Votre réussite, notre engagement</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Découvrez nos solutions éducatives adaptées pour les élèves du primaire et du secondaire à Yaoundé, Douala ou à domicile.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center">
+                    <i class="fas fa-calendar-check mr-2"></i> Réserver un cours
+                </a>
+                <a href="#services" class="px-8 py-4 border border-indigo-600 rounded-lg text-white font-semibold hover:bg-indigo-600/10 transition-all flex items-center justify-center">
+                    <i class="fas fa-star mr-2"></i> Explorer nos services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Nos <span class="text-gradient">Solutions Éducatives</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Des cours adaptés à chaque élève pour garantir des résultats exceptionnels.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 hexagon bg-indigo-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-user-graduate text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-book-open"></i> Cours personnalisés</h3>
+                    <p class="text-gray-300 mb-6">Sessions individuelles avec un tuteur dédié pour un suivi sur mesure, adaptées au rythme et aux besoins spécifiques de chaque élève.</p>
+                    <ul class="text-gray-400 space-y-2 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Plan d'étude sur mesure</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Suivi individuel régulier</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Disponible à domicile ou en centre</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Focus sur les points faibles</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="mt-6 inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 hexagon bg-purple-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-book-open"></i> Cours en groupe</h3>
+                    <p class="text-gray-300 mb-6">Sessions interactives en petits groupes pour favoriser l'émulation, l'échange d'idées et un apprentissage collaboratif.</p>
+                    <ul class="text-gray-400 space-y-2 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            <span>Groupes de 3 à 8 élèves</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            <span>Activités pratiques et dynamiques</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            <span>Encouragement de la collaboration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-400 mr-2"></i>
+                            <span><i class="fas fa-tags"></i> Tarifs compétitifs</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="mt-6 inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 hexagon bg-indigo-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-book-open"></i> Cours à domicile</h3>
+                    <p class="text-gray-300 mb-6"><i class="fas fa-book-open"></i> Cours dispensés directement chez vous pour un apprentissage dans un environnement confortable et familier.</p>
+                    <ul class="text-gray-400 space-y-2 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Horaires flexibles, y compris weekends</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Confort de l'environnement familier</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Tous niveaux scolaires</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-indigo-400 mr-2"></i>
+                            <span>Gain de temps sur les déplacements</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="mt-6 inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Features Section -->
+    <section id="features" class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Pourquoi nos <span class="text-gradient"><i class="fas fa-concierge-bell"></i> Services</span> sont uniques</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Des avantages conçus pour maximiser votre réussite académique.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 hexagon bg-indigo-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Méthodologie éprouvée</h3>
+                    <p class="text-gray-300">Approche pédagogique basée sur des techniques modernes et adaptées à chaque niveau.</p>
+                </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 hexagon bg-purple-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-user-check text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-chalkboard-teacher"></i> Tuteurs qualifiés</h3>
+                    <p class="text-gray-300">Enseignants expérimentés avec une expertise dans leurs matières respectives.</p>
+                </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 hexagon bg-indigo-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Suivi des progrès</h3>
+                    <p class="text-gray-300">Évaluations régulières pour mesurer les avancées et ajuster les programmes.</p>
+                </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 hexagon bg-purple-600 glow flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Flexibilité maximale</h3>
+                    <p class="text-gray-300">Horaires et lieux adaptés à votre emploi du temps et vos besoins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Ce que disent nos <span class="text-gradient">élèves</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Les témoignages de ceux qui ont transformé leur parcours grâce à nos services.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-800/40 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-semibold">ML</span>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Marie L.</h4>
+                            <p class="text-indigo-400">Parent d'élève</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Les cours personnalisés ont transformé les résultats de ma fille en mathématiques. Elle est passée de 8 à 14/20 en un trimestre !"></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="bg-slate-800/40 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-semibold">JP</span>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Jean P.</h4>
+                            <p class="text-purple-400">Élève de Terminale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Les cours en groupe m'ont aidé à mieux comprendre la physique grâce à des discussions dynamiques. J'ai eu 16/20 au bac !"></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="bg-slate-800/40 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-semibold">AD</span>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Amélie D.</h4>
+                            <p class="text-indigo-400">Parent d'élève</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Les cours à domicile sont parfaits pour mon fils. L'enseignant s'adapte à son rythme et il progresse rapidement."></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-700/30 to-purple-700/30 backdrop-blur-sm rounded-2xl p-12 border border-indigo-500/30" data-aos="zoom-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à transformer votre parcours académique ?</h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Contactez-nous dès aujourd'hui pour découvrir comment nos services peuvent vous aider à atteindre l'excellence.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="contact.html" class="px-8 py-4 bg-white text-indigo-700 rounded-lg font-bold hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-2"></i> Nous contacter
+                    </a>
+                    <a href="https://wa.me/+237123456789" class="px-8 py-4 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition-all flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                </div>
+                <p class="text-gray-400 mt-6">Réponse garantie sous 24 heures</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 gradient-bg border-t border-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="hexagon w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 glow">
+                            <svg class="w-8 h-8 text-white relative top-2 left-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">Les Ambitieux</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Centre de cours de répétition pour élèves du primaire et du secondaire. Nous nous engageons à offrir un enseignement de qualité pour l'excellence académique.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/+237123456789" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </a>
+                        <a href="https://t.me/lesambitieux" class="text-gray-400 hover:text-indigo-400 transition-colors">
+                            <i class="fab fa-telegram text-2xl"></i>
+                        </a>
+                        <a href="https://facebook.com/lesambitieux" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                        <a href="https://instagram.com/lesambitieux" class="text-gray-400 hover:text-pink-400 transition-colors">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-6">Liens rapides</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li><a href="tutors.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-tags"></i> Tarifs</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-6"><i class="fas fa-envelope"></i> Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Yaoundé, Douala<br>Cameroun</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-indigo-400 mr-3"></i>
+                            <span class="text-gray-400">+237 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-indigo-400 mr-3"></i>
+                            <span class="text-gray-400">contact@lesambitieux.cm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800/50 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Les Ambitieux. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/+237123456789" class="fixed bottom-6 right-6 w-14 h-14 bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors z-40">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script src="scripts.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+</body>
+</html>

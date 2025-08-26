@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez l'histoire, la mission et les réussites de Les Ambitieux, votre partenaire pour l'excellence éducative au Cameroun.">
+    <title><i class="fas fa-info-circle"></i> À propos - Les Ambitieux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body class="antialiased gradient-bg text-gray-200">
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg" class="fixed top-0 left-0 w-full h-full z-[-1] opacity-10"></canvas>
+    <div class="particle-network"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-dark/80 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="hexagon w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 glow">
+                        <svg class="w-8 h-8 text-white relative top-2 left-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <span class="ml-3 text-xl font-bold text-gradient">Les Ambitieux</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-home"></i> Accueil</a>
+                    <a href="services.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"></a><i class="fas fa-concierge-bell"></i> Services</a>
+                    <a href="tutors.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a>
+                    <a href="locations.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-map-marker-alt"></i> Lieux</a>
+                    <a href="courses.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-book-open"></i> Cours</a>
+                    <a href="pricing.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-tags"></i> Tarifs</a>
+                    <a href="about.html" class="nav-link text-white font-medium relative after:absolute after:w-0 after:h-0.5 after:bg-indigo-400 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"><i class="fas fa-info-circle"></i> À propos</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/+237123456789" class="hidden md:block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-300 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden flex-col grid grid-cols-3 mt-4 space-y-4 bg-slate-900/95 p-4 rounded-lg backdrop-blur-md">
+                <a href="index.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-home"></i> Accueil</a>
+                <a href="services.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-concierge-bell"></i> Services</a>
+                <a href="tutors.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a>
+                <a href="locations.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-map-marker-alt"></i> Lieux</a>
+                <a href="courses.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-book-open"></i> Cours</a>
+                <a href="pricing.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-tags"></i> Tarifs</a>
+                 <a href="about.html" class="text-white py-2 px-4 rounded bg-indigo-600/30transition-colors"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="https://wa.me/+237123456789" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover opacity-20 z-[-1]">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-light-background-3257-large.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0 grid-pattern opacity-10"></div>
+        <div id="particles-container" class="absolute inset-0 overflow-hidden"></div>
+        <div class="container mx-auto px-6 py-20 text-center z-10" data-aos="fade-up" data-aos-duration="1500">
+            <div class="inline-flex items-center bg-indigo-900/30 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-indigo-600/30">
+                <span class="h-2 w-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
+                <span class="text-sm text-indigo-300">Notre passion pour l'éducation</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight ">
+                <span class="text-gradient block"><i class="fas fa-info-circle"></i> À propos</span>
+                <span class="block mt-2 text-white text-3xl md:text-5xl font-medium">Façonner l'avenir depuis 2015</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Découvrez l'histoire, la mission et les réussites de Les Ambitieux, votre partenaire pour l'excellence éducative à Yaoundé et Douala.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#history" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center">
+                    <i class="fas fa-book-open mr-2"></i> Notre histoire
+                </a>
+                <a href="#stats" class="px-8 py-4 border border-indigo-600 rounded-lg text-white font-semibold hover:bg-indigo-600/10 flex items-center justify-center">
+                    <i class="fas fa-chart-line mr-2"></i> Nos statistiques
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#history" class="text-gray-400 hover:text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-16 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto holographic-card p-8 rounded-2xl" data-aos="fade-up">
+                <blockquote class="text-2xl md:text-3xl text-gray-200 italic ">
+                    "L'éducation est l'arme la plus puissante qu'on puisse utiliser pour changer le monde."
+                </blockquote>
+                <p class="text-indigo-400 mt-4 font-semibold">— Nelson Mandela</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission-vision" class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Notre <span class="text-gradient">Mission & Vision</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Transformer des vies grâce à une éducation accessible et de qualité
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Mission</h3>
+                    <p class="text-gray-300">
+                        Offrir une éducation personnalisée et innovante qui inspire la confiance, stimule la curiosité et prépare chaque élève à exceller dans ses études et dans la vie.
+                    </p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Vision</h3>
+                    <p class="text-gray-300">
+                        Devenir le leader de l'éducation complémentaire au Cameroun, en utilisant la technologie et des méthodes pédagogiques modernes pour démocratiser l'accès à l'excellence académique.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Histoire</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Un parcours d'excellence et d'innovation éducative depuis 2015
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="holographic-card rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Les Ambitieux classroom" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-white">Nos débuts</h3>
+                            <p class="text-gray-300">
+                                Fondée en 2015 à Yaoundé par Dr. Jean-Paul Mballa, Les Ambitieux a débuté avec une petite équipe de tuteurs dévoués offrant des cours à domicile pour les élèves du primaire.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2015</h3>
+                            <p class="text-gray-300">Création à Yaoundé avec 5 tuteurs et 50 élèves</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2017</h3>
+                            <p class="text-gray-300">Introduction des cours de sciences et d'anglais</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2018</h3>
+                            <p class="text-gray-300">Ouverture du premier centre à Yaoundé avec 200 élèves</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2020</h3>
+                            <p class="text-gray-300">Expansion à Douala et lancement des cours en ligne</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2022</h3>
+                            <p class="text-gray-300">Partenariats avec des écoles locales</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2023</h3>
+                            <p class="text-gray-300">Lancement de la plateforme numérique Les Ambitieux</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-semibold text-white">2025</h3>
+                            <p class="text-gray-300">Plus de 2000 élèves et 50 tuteurs qualifiés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Impact</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Des résultats concrets qui témoignent de notre engagement pour l'excellence éducative
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-bold text-gradient mb-4">2000+</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Élèves accompagnés</h3>
+                    <p class="text-gray-300">Depuis notre création en 2015</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-bold text-gradient mb-4">50+</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white"><i class="fas fa-chalkboard-teacher"></i> Tuteurs experts</h3>
+                    <p class="text-gray-300">Sélectionnés rigoureusement</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-bold text-gradient mb-4">92%</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Taux de réussite</h3>
+                    <p class="text-gray-300">Moyenne aux examens nationaux</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl font-bold text-gradient mb-4">10+</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Matières enseignées</h3>
+                    <p class="text-gray-300">Du primaire au secondaire</p>
+                </div>
+            </div>
+            <!-- Student Growth Chart -->
+            <div class="mb-16" data-aos="fade-up">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+                    <h3 class="text-2xl font-semibold text-white">Évolution du nombre d'élèves</h3>
+                    <div class="flex space-x-2 mt-4 sm:mt-0">
+                        <button class="filter-btn px-3 py-1 rounded-lg bg-slate-700/50 text-sm active" data-filter="all">Tous</button>
+                        <button class="filter-btn px-3 py-1 rounded-lg bg-slate-700/50 text-sm" data-filter="yaounde">Yaoundé</button>
+                        <button class="filter-btn px-3 py-1 rounded-lg bg-slate-700/50 text-sm" data-filter="douala">Douala</button>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl p-6">
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- Success Rate Chart -->
+            <div data-aos="fade-up">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+                    <h3 class="text-2xl font-semibold text-white">Taux de réussite par examen</h3>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-4 sm:mt-0">
+                        <select id="exam-filter" class="px-3 py-1 rounded-lg bg-slate-700/50 text-sm text-white">
+                            <option value="all">Tous les examens</option>
+                            <option value="cepe">CEPE</option>
+                            <option value="bepc">BEPC</option>
+                            <option value="probatoire">Probatoire</option>
+                            <option value="bac">Baccalauréat</option>
+                        </select>
+                        <select id="year-filter" class="px-3 py-1 rounded-lg bg-slate-700/50 text-sm text-white">
+                            <option value="all">Toutes les années</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl p-6">
+                    <div class="chart-container">
+                        <canvas id="successChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Fondateur</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Rencontrez l'homme derrière la vision de Les Ambitieux
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/3" data-aos="fade-right">
+                    <div class="holographic-card rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Dr. Jean-Paul Mballa" class="w-full h-80 object-cover">
+                        <div class="p-8 text-center">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Dr. Jean-Paul Mballa</h3>
+                            <p class="text-purple-400 mb-4">Fondateur & Directeur Pédagogique</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-linkedin text-xl"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter text-xl"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fas fa-envelope text-xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3" data-aos="fade-left">
+                    <div class="holographic-card rounded-2xl p-8">
+                        <p class="text-gray-300 mb-6">
+                            Docteur en sciences de l'éducation et ancien enseignant, Dr. Jean-Paul Mballa a fondé Les Ambitieux avec une vision claire : démocratiser l'accès à une éducation de qualité au Cameroun.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            Fort de 20 ans d'expérience dans l'enseignement, il a conçu des programmes pédagogiques innovants qui combinent rigueur académique et motivation personnelle, permettant à des milliers d'élèves de réaliser leur potentiel.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-3">Formation</h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-graduation-cap text-indigo-400 mt-1 mr-3"></i>
+                                        <span>Doctorat en Sciences de l'Éducation, Université de Yaoundé</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-graduation-cap text-indigo-400 mt-1 mr-3"></i>
+                                        <span>Master en Pédagogie, Université de Douala</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white mb-3">Expertise</h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-indigo-400 mt-1 mr-3"></i>
+                                        <span>Pédagogie différenciée</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-indigo-400 mt-1 mr-3"></i>
+                                        <span>Innovation éducative</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-indigo-400 mt-1 mr-3"></i>
+                                        <span>Mentorat académique</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Équipe</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Des professionnels passionnés dédiés à la réussite de vos enfants
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Tutor" class="w-24 h-24 mx-auto mb-6 rounded-full object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-white"><i class="fas fa-chalkboard-teacher"></i> Tuteurs qualifiés</h3>
+                    <p class="text-gray-300">Nos 50 tuteurs sont des experts dans leurs domaines, avec des diplômes avancés et une passion pour l'enseignement.</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1516321310762-479437144403?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Teaching method" class="w-24 h-24 mx-auto mb-6 rounded-full object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Pédagogie innovante</h3>
+                    <p class="text-gray-300">Méthodes d'enseignement modernes et interactives adaptées à chaque élève pour un apprentissage optimal.</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1503676260728-332cceb654f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Community" class="w-24 h-24 mx-auto mb-6 rounded-full object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Engagement communautaire</h3>
+                    <p class="text-gray-300">Nous organisons des ateliers gratuits pour les communautés locales, renforçant notre impact social.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="tutors.html" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-indigo-400 rounded-lg hover:bg-indigo-600/10">
+                    Rencontrer nos tuteurs
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Univers</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Découvrez nos centres, nos cours et notre communauté en images
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="holographic-card rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Classroom" class="w-full h-48 object-cover cursor-pointer" onclick="openLightbox(this.src, 'Salle de classe à Yaoundé')">
+                    <div class="p-4">
+                        <p class="text-gray-300">Salle de classe à Yaoundé</p>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Study group" class="w-full h-48 object-cover cursor-pointer" onclick="openLightbox(this.src, 'Groupe d\'étude à Douala')">
+                    <div class="p-4">
+                        <p class="text-gray-300">Groupe d'étude à Douala</p>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Online learning" class="w-full h-48 object-cover cursor-pointer" onclick="openLightbox(this.src, 'Cours en ligne interactifs')">
+                    <div class="p-4">
+                        <p class="text-gray-300"><i class="fas fa-book-open"></i> Cours en ligne interactifs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Lightbox -->
+        <div id="lightbox" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+            <div class="relative max-w-4xl w-full">
+                <img id="lightbox-image" src="" alt="Lightbox image" class="w-full h-auto rounded-lg">
+                <p id="lightbox-caption" class="text-white text-center mt-4"></p>
+                <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact Section -->
+    <section id="community" class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Notre <span class="text-gradient">Impact Communautaire</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Au-delà de l'éducation, nous transformons les communautés
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1503676260728-332cceb654f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Workshops" class="w-full h-48 object-cover mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Ateliers gratuits</h3>
+                    <p class="text-gray-300">Plus de 500 ateliers communautaires organisés pour promouvoir l'éducation.</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1503676260728-332cceb654f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Scholarships" class="w-full h-48 object-cover mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Bourses d'études</h3>
+                    <p class="text-gray-300">100+ bourses offertes aux élèves méritants issus de milieux défavorisés.</p>
+                </div>
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1503676260728-332cceb654f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Outreach" class="w-full h-48 object-cover mb-4">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Sensibilisation</h3>
+                    <p class="text-gray-300">Programmes de sensibilisation à l'importance de l'éducation dans 10+ communautés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4 ">Ils nous <span class="text-gradient">font confiance</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Témoignages de parents et d'élèves satisfaits
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Marie L." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Marie L.</h4>
+                            <p class="text-indigo-400">Parent d'élève</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Grâce aux cours de mathématiques, mon fils a finalement compris les concepts qui lui posaient problème. Ses notes ont augmenté de 3 points en seulement 2 mois !"></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Jean P." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Jean P.</h4>
+                            <p class="text-purple-400">Élève de Terminale</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Les cours de physique avec M. Diallo m'ont complètement réconcilié avec la matière. J'ai obtenu 16/20 au bac alors que je stagnais à 9 avant de commencer."></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="holographic-card rounded-xl p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1487412721497-192664e97526?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Amélie D." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="text-white font-semibold">Amélie D.</h4>
+                            <p class="text-indigo-400">Parent d'élève</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"La flexibilité des horaires et la qualité des enseignants ont fait toute la différence pour notre famille. Je recommande vivement Les Ambitieux !"></p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto holographic-card p-8 rounded-2xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient">Prêt à transformer votre avenir académique ?</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Rejoignez Les Ambitieux dès aujourd'hui et découvrez une éducation qui inspire et motive.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30">
+                        Nous contacter
+                    </a>
+                    <a href="courses.html" class="px-8 py-4 border border-indigo-600 rounded-lg text-white font-semibold hover:bg-indigo-600/10">
+                        Découvrir nos cours
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 gradient-bg border-t border-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="hexagon w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 glow">
+                            <svg class="w-8 h-8 text-white relative top-2 left-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">Les Ambitieux</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Centre de cours de répétition pour élèves du primaire et du secondaire. Nous nous engageons à offrir un enseignement de qualité pour l'excellence académique.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/+237123456789" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </a>
+                        <a href="https://t.me/lesambitieux" class="text-gray-400 hover:text-indigo-400 transition-colors">
+                            <i class="fab fa-telegram text-2xl"></i>
+                        </a>
+                        <a href="https://facebook.com/lesambitieux" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                        <a href="https://instagram.com/lesambitieux" class="text-gray-400 hover:text-pink-400 transition-colors">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-6">Liens rapides</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li><a href="tutors.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-tags"></i> Tarifs</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-6"><i class="fas fa-envelope"></i> Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Yaoundé, Douala<br>Cameroun</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-indigo-400 mr-3"></i>
+                            <span class="text-gray-400">+237 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-indigo-400 mr-3"></i>
+                            <span class="text-gray-400">contact@lesambitieux.cm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800/50 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Les Ambitieux. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/+237123456789" class="fixed bottom-6 right-6 w-14 h-14 bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors z-40">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script src="scripts.js"></script>
+    
+
+    <!-- JavaScript for Charts and Lightbox -->
+    <script>
+
+
+        // Lightbox Functions
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            lightboxImage.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('hidden');
+            gsap.fromTo(lightbox, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' });
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            gsap.to(lightbox, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => lightbox.classList.add('hidden')
+            });
+        }
+
+        // Chart Data
+        const growthData = {
+            all: [50, 100, 200, 350, 500, 700, 900, 1100, 1400, 1700, 2000],
+            yaounde: [50, 80, 150, 250, 350, 450, 550, 650, 800, 950, 1100],
+            douala: [0, 0, 0, 100, 150, 250, 350, 450, 600, 750, 900]
+        };
+
+        const successData = {
+            cepe: {
+                2015: 85, 2016: 87, 2017: 88, 2018: 90, 2019: 91, 2020: 89, 2021: 92, 2022: 93, 2023: 94, 2024: 95, 2025: 96
+            },
+            bepc: {
+                2015: 80, 2016: 82, 2017: 83, 2018: 85, 2019: 86, 2020: 84, 2021: 87, 2022: 88, 2023: 89, 2024: 90, 2025: 91
+            },
+            probatoire: {
+                2015: 75, 2016: 77, 2017: 78, 2018: 80, 2019: 81, 2020: 79, 2021: 82, 2022: 83, 2023: 84, 2024: 85, 2025: 86
+            },
+            bac: {
+                2015: 70, 2016: 72, 2017: 73, 2018: 75, 2019: 76, 2020: 74, 2021: 77, 2022: 78, 2023: 79, 2024: 80, 2025: 81
+            },
+            all: {
+                2015: 82.5, 2016: 84.5, 2017: 85.5, 2018: 87.5, 2019: 88.5, 2020: 86.5, 2021: 89.5, 2022: 90.5, 2023: 91.5, 2024: 92.5, 2025: 93.5
+            }
+        };
+
+        // Growth Chart
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        const growthChart = new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Nombre d\'élèves',
+                    data: growthData.all,
+                    borderColor: '#4f46e5',
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Nombre d\'élèves', color: '#f8fafc' } },
+                    x: { title: { display: true, text: 'Année', color: '#f8fafc' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#f8fafc' } },
+                    tooltip: { backgroundColor: '#1e293b', titleColor: '#f8fafc', bodyColor: '#f8fafc' }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        // Success Rate Chart
+        const successCtx = document.getElementById('successChart').getContext('2d');
+        const successChart = new Chart(successCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Taux de réussite (%)',
+                    data: Object.values(successData.all),
+                    backgroundColor: 'rgba(79, 70, 229, 0.6)',
+                    borderColor: '#4f46e5',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100, title: { display: true, text: 'Taux de réussite (%)', color: '#f8fafc' } },
+                    x: { title: { display: true, text: 'Année', color: '#f8fafc' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#f8fafc' } },
+                    tooltip: { backgroundColor: '#1e293b', titleColor: '#f8fafc', bodyColor: '#f8fafc' }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        // Filter Handlers
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.dataset.filter;
+                growthChart.data.datasets[0].data = growthData[filter];
+                growthChart.update();
+            });
+        });
+
+        document.getElementById('exam-filter').addEventListener('change', () => {
+            const exam = document.getElementById('exam-filter').value;
+            const year = document.getElementById('year-filter').value;
+            let data;
+            if (year === 'all') {
+                data = Object.values(successData[exam]);
+            } else {
+                data = Array(11).fill(null).map((_, i) => successData[exam][2015 + i] || null);
+            }
+            successChart.data.datasets[0].data = data;
+            successChart.data.datasets[0].label = `Taux de réussite (${exam === 'all' ? 'Tous les examens' : exam.toUpperCase()})`;
+            successChart.update();
+        });
+
+        document.getElementById('year-filter').addEventListener('change', () => {
+            const exam = document.getElementById('exam-filter').value;
+            const year = document.getElementById('year-filter').value;
+            let data;
+            if (year === 'all') {
+                data = Object.values(successData[exam]);
+            } else {
+                data = Array(11).fill(null).map((_, i) => successData[exam][2015 + i] || null);
+            }
+            successChart.data.datasets[0].data = data;
+            successChart.data.datasets[0].label = `Taux de réussite (${exam === 'all' ? 'Tous les examens' : exam.toUpperCase()})`;
+            successChart.update();
+        });
+
+        // GSAP Animations for New Sections
+        gsap.utils.toArray('.holographic-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.2,
+                ease: 'power3.out'
+            });
+        });
+    </script>
+    <
+</body>
+</html>
