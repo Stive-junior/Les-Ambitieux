@@ -14,7 +14,7 @@ if (mobileMenuBtn && mobileMenu && menuIcon) {
         isOpen = !isOpen;
 
         mobileMenu.classList.toggle('hidden');
-        mobileMenu.style.transform = 'perspective(1000px) rotateY(180deg)';
+        menuIcon.style.transform = 'perspective(1000px) rotateY(180deg)';
 
 
         // Appliquer la nouvelle icône SVG avec effet d'opacité rapide
@@ -260,7 +260,7 @@ if (mobileMenuBtn && mobileMenu && menuIcon) {
             });
     }
 
-    fetch('https://raw.githubusercontent.com/Stive-junior/Les-Ambitieux/5843f3ec62b3bbda4b3b4aabf1711d4c6974424d/db.json')
+    fetch('https://raw.githubusercontent.com/Stive-junior/Les-Ambitieux/79c7df567b87bc7c1edfba4bfde776667cb87e2e/db.json')
         .then(response => response.json())
         .then(data => {
 
@@ -289,7 +289,7 @@ if (mobileMenuBtn && mobileMenu && menuIcon) {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            fetch('https://raw.githubusercontent.com/Stive-junior/Les-Ambitieux/5843f3ec62b3bbda4b3b4aabf1711d4c6974424d/db.json')
+            fetch('https://raw.githubusercontent.com/Stive-junior/Les-Ambitieux/79c7df567b87bc7c1edfba4bfde776667cb87e2e/db.json')
             .then(response => {
                     if (!response.ok) throw new Error('Erreur réseau lors du chargement de db.json');
                     return response.json();
