@@ -48,31 +48,31 @@
             "id": 1,
             "name": "Dr. Jean Ngu",
             "bio": "Docteur en mathématiques avec 10 ans d'expérience dans l'enseignement.",
-            "image": "tutor1.jpg"
+            "image": "tutor1.png"
         },
         {
             "id": 2,
             "name": "Mme. Marie Etonde",
             "bio": "Professeure de français certifiée, passionnée par la langue et la littérature.",
-            "image": "tutor2.jpg"
+            "image": "tutor2.png"
         },
         {
             "id": 3,
             "name": "M. Paul Tagne",
             "bio": "Expert en physique-chimie avec 8 ans d'expérience dans l'accompagnement des élèves du secondaire.",
-            "image": "tutor3.jpg"
+            "image": "tutor3.png"
         },
         {
             "id": 4,
             "name": "Mme. Amina Ndongo",
             "bio": "Enseignante d'anglais bilingue, spécialisée dans la préparation aux examens internationaux.",
-            "image": "tutor4.jpg"
+            "image": "tutor4.png"
         },
         {
             "id": 5,
             "name": "Dr. Sophie Mballa",
             "bio": "Docteure en sciences de l'éducation, experte en pédagogie innovante.",
-            "image": "tutor5.jpg"
+            "image": "tutor5.png"
         }
     ],
     "locations": [

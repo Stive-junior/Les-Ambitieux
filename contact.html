@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contactez Les Ambitieux pour planifier vos cours de répétition à Yaoundé, Douala ou à domicile. Réponse rapide garantie.">
+    <meta name="keywords" content="contact, cours de répétition, Yaoundé, Douala, Les Ambitieux">
+    <meta name="author" content="Les Ambitieux">
     <title>Contact - Les Ambitieux</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+       
+        .svg-path {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .svg-path:hover {
+            stroke-dashoffset: 0;
+        }
+    </style>
 </head>
 <body class="antialiased gradient-bg">
     <!-- Matrix Background -->
-    <canvas id="matrix-bg" class="matrix-bg"></canvas>
+    <canvas id="matrix-bg" class="fixed inset-0 w-full h-full z-0 matrix-bg"></canvas>
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 backdrop-blur-md bg-dark/80 border-b border-gray-800">
@@ -37,7 +51,7 @@
                     <a href="courses.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-book-open"></i> Cours</a>
                     <a href="pricing.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-tags"></i> Tarifs</a>
                     <a href="about.html" class="nav-link text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-info-circle"></i> À propos</a>
-                    <a href="contact.html" class="nav-link text-white font-medium relative after:absolute after:w-0 after:h-0.5 after:bg-indigo-400 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"><i class="fas fa-envelope"></i> Contact</a>
+                    <a href="contact.html" class="nav-link text-white font-medium relative after:absolute after:w-full after:h-0.5 after:bg-indigo-400 after:left-0 after:-bottom-1"><i class="fas fa-envelope"></i> Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="https://wa.me/+237123456789" class="hidden md:block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center">
@@ -45,25 +59,26 @@
                     </a>
                     <div class="md:hidden">
                         <button id="mobile-menu-btn" class="text-gray-300 focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="menu-icon" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M20 24H4c-2.2 0-4-1.8-4-4V4c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v16c0 2.2-1.8 4-4 4zM4 2C2.9 2 2 2.9 2 4v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4z"></path>
+  <path d="M8 24c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v22c0 .6-.4 1-1 1z"></path>
+  <path d="M14 13c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l3-3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-3 3c-.2.2-.4.3-.7.3z"></path>
+  <path d="M17 16c-.3 0-.5-.1-.7-.3l-3-3c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l3 3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3z"></path>
+</svg>
                         </button>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden flex-col grid grid-cols-3 mt-4 space-y-4 bg-slate-900/95 p-4 rounded-lg backdrop-blur-md">
-                <a href="index.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-home"></i> Accueil</a>
+            <div id="mobile-menu" class="hidden md:hidden flex-col grid grid-cols-3 gap-2 mt-4 bg-slate-900/95 p-4 rounded-lg backdrop-blur-md">
+                <a href="index.html" class="text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-home"></i> Accueil</a>
                 <a href="services.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-concierge-bell"></i> Services</a>
                 <a href="tutors.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-chalkboard-teacher"></i> Tuteurs</a>
                 <a href="locations.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-map-marker-alt"></i> Lieux</a>
                 <a href="courses.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-book-open"></i> Cours</a>
                 <a href="pricing.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-tags"></i> Tarifs</a>
                 <a href="about.html" class="text-gray-300 hover:text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-info-circle"></i> À propos</a>
-                <a href="contact.html" class="text-white py-2 px-4 rounded hover:bg-indigo-600/20 transition-colors"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="https://wa.me/+237123456789" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center">
-                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
-                </a>
+                <a href="contact.html" class="text-white py-2 px-4 rounded bg-indigo-600/20"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="https://wa.me/+237123456789" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</a>
             </div>
         </div>
     </nav>
@@ -75,14 +90,14 @@
         <div class="container mx-auto px-6 py-20 text-center z-10" data-aos="fade-up" data-aos-duration="1500">
             <div class="inline-flex items-center bg-indigo-900/30 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-indigo-600/30">
                 <span class="h-2 w-2 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
-                <span class="text-sm text-indigo-300">Nous sommes à votre écoute</span>
+                <span class="text-sm text-indigo-300"><i class="fas fa-headset"></i> Nous sommes à votre écoute</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                <span class="text-gradient block">Nous Contacter</span>
+                <span class="text-gradient block">Contactez-Nous</span>
                 <span class="block mt-2 text-white text-3xl md:text-5xl font-medium">Votre réussite commence ici</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                Contactez-nous pour planifier vos cours ou poser vos questions. Réponse rapide garantie sous 24 heures.
+                Planifiez vos cours ou posez vos questions. Réponse rapide garantie sous 24 heures.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#contact-form" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center">
@@ -93,10 +108,15 @@
                 </a>
             </div>
         </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#contact-form" class="text-gray-400 hover:text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact-form" class="py-20 relative">
+    <section id="contact-form" class="py-2 relative">
         <div class="absolute inset-0 grid-pattern opacity-5"></div>
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -105,29 +125,66 @@
                     Remplissez le formulaire ci-dessous pour toute question ou pour planifier une session. Votre confidentialité est notre priorité.
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-right">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="space-y-4">
-                        <input type="text" placeholder="Nom complet" class="w-full p-3 bg-gray-800/50 text-gray-300 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-600">
-                        <input type="email" placeholder="Adresse e-mail" class="w-full p-3 bg-gray-800/50 text-gray-300 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-600">
-                        <input type="tel" placeholder="Numéro de téléphone" class="w-full p-3 bg-gray-800/50 text-gray-300 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-600">
-                        <input type="text" placeholder="Sujet" class="w-full p-3 bg-gray-800/50 text-gray-300 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-600">
-                        <textarea placeholder="Votre message" rows="5" class="w-full p-3 bg-gray-800/50 text-gray-300 rounded-lg border border-gray-700 focus:outline-none focus:border-indigo-600"></textarea>
-                        <button class="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transition-all">Envoyer</button>
-                        <p class="text-gray-400 text-sm mt-4 text-center">Vos données sont protégées et ne seront jamais partagées.</p>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 ">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-right">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Contactez-nous" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Contact'; this.onerror=null;">
+                    <form id="contactForm" action="success.html" method="POST">
+                        <div class="space-y-6">
+                            <div class="floating-label">
+                                <input type="text" id="fullname" name="fullname" class="floating-input" placeholder=" " required>
+                                <label for="fullname" class="floating-label-text">Nom complet</label>
+                            </div>
+                            <div class="floating-label">
+                                <input type="email" id="email" name="email" class="floating-input" placeholder=" " required>
+                                <label for="email" class="floating-label-text">Adresse e-mail</label>
+                            </div>
+                            <div class="floating-label">
+                                <input type="tel" id="phone" name="phone" class="floating-input" placeholder=" " required>
+                                <label for="phone" class="floating-label-text">Numéro de téléphone</label>
+                            </div>
+                            <div class="floating-label">
+                                <select id="subject" name="subject" class="floating-input" required>
+                                    <option value="" selected disabled></option>
+                                    <option value="cours">Demande de cours</option>
+                                    <option value="info">Demande d'information</option>
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <label for="subject" class="floating-label-text">Sujet</label>
+                            </div>
+                            <div class="floating-label">
+                                <select id="location" name="location" class="floating-input" required>
+                                    <option value="" selected disabled></option>
+                                    <option value="yaounde">Yaoundé</option>
+                                    <option value="douala">Douala</option>
+                                    <option value="domicile">À domicile</option>
+                                    <option value="enligne">En ligne</option>
+                                </select>
+                                <label for="location" class="floating-label-text">Lieu préféré</label>
+                            </div>
+                            <div class="floating-label">
+                                <textarea id="message" name="message" class="floating-input" rows="4" placeholder=" " required></textarea>
+                                <label for="message" class="floating-label-text">Votre message</label>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <input type="checkbox" id="privacy" name="privacy" class="form-checkbox h-5 w-5 text-indigo-600" required>
+                                <label for="privacy" class="ml-2 text-gray-300 text-sm">J'accepte la <a href="#" class="text-indigo-400 hover:underline">politique de confidentialité</a></label>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-white font-semibold glow hover:from-indigo-700 hover:to-purple-700 transition-all flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Envoyer le message
+                            </button>
+                            <p class="text-gray-400 text-sm mt-4 text-center">Vos données sont protégées et ne seront jamais partagées.</p>
+                        </div>
+                    </form>
                 </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-left">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.5 14.5L12 21l1.5-1.5M17 3v2m-2 16h2M5 17h2m4 0h2M3 9h18M3 13h18"></path>
-                        </svg>
-                    </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-left">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 5h12M9 3v2m1.5 14.5L12 21l1.5-1.5M17 3v2m-2 16h2M5 17h2m4 0h2M3 9h18M3 13h18"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nos centres" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Centres'; this.onerror=null;">
                     <h3 class="text-2xl font-semibold mb-4">Autres Moyens de Contact</h3>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-4">
@@ -152,7 +209,24 @@
                         </div>
                         <div class="flex items-start space-x-4">
                             <i class="fas fa-map-marker-alt text-indigo-400 text-xl mt-1"></i>
-                            <span class="text-gray-300">Douala: Bonapriso, près de l’Hôpital Général</span>
+                            <span class="text-gray-300">Douala: Bonapriso, près de l'Hôpital Général</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <h4 class="text-lg font-semibold mb-4">Horaires d'ouverture</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Lundi - Vendredi</span>
+                                <span class="text-gray-300">8h00 - 18h00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Samedi</span>
+                                <span class="text-gray-300">9h00 - 16h00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Dimanche</span>
+                                <span class="text-gray-300">Fermé</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,36 +241,33 @@
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Pourquoi <span class="text-gradient">Nous Contacter</span></h2>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Nous sommes là pour répondre à toutes vos questions avec rapidité et professionnalisme.
+                    Nous offrons un support rapide et professionnel pour répondre à toutes vos questions.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="100">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1516321310767-83f617e7b7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Réponse rapide" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Réponse+Rapide'; this.onerror=null;">
                     <h3 class="text-2xl font-semibold mb-4">Réponse rapide</h3>
                     <p class="text-gray-300">Nous répondons à toutes les demandes sous 24 heures, 7 jours sur 7.</p>
                 </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="200">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1509062522-2a56e6b96d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Confidentialité" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Confidentialité'; this.onerror=null;">
                     <h3 class="text-2xl font-semibold mb-4">Confidentialité garantie</h3>
                     <p class="text-gray-300">Vos informations personnelles sont protégées et jamais partagées.</p>
                 </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a2 2 0 00-2-2h-3m-3 4h-5v-2a2 2 0 012-2h3m-7-6h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="300">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 20h5v-2a2 2 0 00-2-2h-3m-3 4h-5v-2a2 2 0 012-2h3m-7-6h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Support dédié" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Support+Dédié'; this.onerror=null;">
                     <h3 class="text-2xl font-semibold mb-4">Support dédié</h3>
-                    <p class="text-gray-300">Notre équipe est là pour vous guider à chaque étape de votre parcours.</p>
+                    <p class="text-gray-300">Notre équipe vous guide à chaque étape de votre parcours.</p>
                 </div>
             </div>
         </div>
@@ -213,32 +284,29 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 italic">“L’équipe de Les Ambitieux a répondu rapidement à ma demande et m’a guidé pour choisir le bon cours pour mon fils.”</p>
-                    <p class="text-gray-400 mt-4 text-right">– Marie T., Yaoundé</p>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="100">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1517502884422-41eaad4a3f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Témoignage Marie" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Témoignage'; this.onerror=null;">
+                    <p class="text-gray-300 italic">"L'équipe a répondu rapidement à ma demande et m'a guidé pour choisir le bon cours pour mon fils."</p>
+                    <p class="text-white font-semibold mt-4">Marie T. – Yaoundé</p>
                 </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 italic">“Leur professionnalisme et leur disponibilité m’ont impressionné. Je recommande vivement !”</p>
-                    <p class="text-gray-400 mt-4 text-right">– Paul N., Douala</p>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="200">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Témoignage Paul" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Témoignage'; this.onerror=null;">
+                    <p class="text-gray-300 italic">"Leur professionnalisme et leur disponibilité m'ont impressionné. Je recommande vivement !"</p>
+                    <p class="text-white font-semibold mt-4">Paul N. – Douala</p>
                 </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 mb-6 mx-auto">
-                        <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    <p class="text-gray-300 italic">“Grâce à leur support rapide via WhatsApp, j’ai pu organiser des cours à domicile en un rien de temps.”</p>
-                    <p class="text-gray-400 mt-4 text-right">– Amina B., Yaoundé</p>
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow relative" data-aos="fade-up" data-aos-delay="300">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 20h5v-2a2 2 0 00-2-2h-3m-3 4h-5v-2a2 2 0 012-2h3m-7-6h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
+                    </svg>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Témoignage Amina" class="w-full h-48 object-cover rounded-lg mb-6" onerror="this.src='https://via.placeholder.com/600x400?text=Témoignage'; this.onerror=null;">
+                    <p class="text-gray-300 italic">"Grâce à leur support rapide via WhatsApp, j'ai pu organiser des cours à domicile en un rien de temps."</p>
+                    <p class="text-white font-semibold mt-4">Amina B. – Yaoundé</p>
                 </div>
             </div>
         </div>
@@ -255,15 +323,27 @@
                 </p>
             </div>
             <div class="space-y-6 max-w-3xl mx-auto">
-                <div class="bg-slate-800/50 backdrop-blur-md rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-6 faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M12 4h9"></path>
+                        <path d="M4 9h16"></path>
+                        <path d="M4 15h16"></path>
+                    </svg>
                     <h3 class="text-xl font-semibold text-white mb-2">Quel est le meilleur moyen de vous contacter ?</h3>
                     <p class="text-gray-300">WhatsApp (+237 123 456 789) est le moyen le plus rapide, mais vous pouvez aussi nous appeler, envoyer un e-mail ou utiliser le formulaire.</p>
                 </div>
-                <div class="bg-slate-800/50 backdrop-blur-md rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-6 faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
                     <h3 class="text-xl font-semibold text-white mb-2">Quand puis-je attendre une réponse ?</h3>
                     <p class="text-gray-300">Nous répondons sous 24 heures, souvent plus rapidement via WhatsApp ou Telegram.</p>
                 </div>
-                <div class="bg-slate-800/50 backdrop-blur-md rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-6 faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <svg class="absolute top-4 right-4 w-12 h-12 text-indigo-400 opacity-50 svg-path" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
                     <h3 class="text-xl font-semibold text-white mb-2">Puis-je visiter vos centres ?</h3>
                     <p class="text-gray-300">Oui, nos centres à Yaoundé et Douala sont ouverts du lundi au samedi, 8h-18h. Prenez rendez-vous pour une visite personnalisée.</p>
                 </div>
@@ -276,69 +356,23 @@
         <div class="absolute inset-0 grid-pattern opacity-5"></div>
         <div class="container mx-auto px-6 text-center">
             <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up">
-                <div class="w-16 h-16 mb-6 mx-auto">
-                    <svg class="w-full h-full text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a2 2 0 00-2-2h-3m-3 4h-5v-2a2 2 0 012-2h3m-7-6h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
-                    </svg>
-                </div>
+                <svg class="w-16 h-16 mb-6 mx-auto text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a2 2 0 00-2-2h-3m-3 4h-5v-2a2 2 0 012-2h3m-7-6h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
+                </svg>
                 <h3 class="text-3xl font-bold mb-4">+<span id="inquiry-counter">5000</span> Demandes traitées</h3>
-                <p class="text-gray-300">Rejoignez des milliers de familles qui nous font confiance pour l’éducation de leurs enfants.</p>
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const counter = document.getElementById('inquiry-counter');
-                        let count = 4500;
-                        const target = 5000;
-                        const increment = Math.ceil((target - count) / 50);
-                        const interval = setInterval(() => {
-                            count += increment;
-                            if (count >= target) {
-                                count = target;
-                                clearInterval(interval);
-                            }
-                            counter.textContent = count.toLocaleString();
-                        }, 50);
-                    });
-                </script>
+                <p class="text-gray-300">Rejoignez des milliers de familles qui nous font confiance pour l'éducation de leurs enfants.</p>
             </div>
         </div>
     </section>
-
-    <!-- Map Section (Commented Out for Future Integration) -->
-    <!--
-    <section id="map" class="py-20 gradient-bg relative">
-        <div class="absolute inset-0 grid-pattern opacity-5"></div>
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-bold mb-4">Nos <span class="text-gradient">Centres</span></h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Visitez nos centres à Yaoundé et Douala pour rencontrer notre équipe.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-2xl font-semibold mb-4">Yaoundé</h3>
-                    <p class="text-gray-300">Rue Melen, face au Lycée Général Leclerc</p>
-                    <!-- Embed Google Maps or similar here -->
-    <!--
-                </div>
-                <div class="holographic-card bg-slate-800/50 backdrop-blur-md rounded-xl p-8 card-hover glow" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-2xl font-semibold mb-4">Douala</h3>
-                    <p class="text-gray-300">Bonapriso, près de l’Hôpital Général</p>
-                    <!-- Embed Google Maps or similar here -->
-    <!--
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
 
     <!-- CTA Section -->
     <section class="py-20 relative">
+        <div class="absolute inset-0 grid-pattern opacity-5"></div>
         <div class="container mx-auto px-6 text-center">
             <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-700/30 to-purple-700/30 backdrop-blur-sm rounded-2xl p-12 border border-indigo-500/30" data-aos="zoom-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à commencer ?</h2>
                 <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                    Contactez-nous dès aujourd’hui pour planifier vos cours ou obtenir plus d’informations.
+                    Contactez-nous dès aujourd'hui pour planifier vos cours ou obtenir plus d'informations.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="#contact-form" class="px-8 py-4 bg-white text-indigo-700 rounded-lg font-bold hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center">
@@ -367,7 +401,7 @@
                         <span class="ml-3 text-xl font-bold text-gradient">Les Ambitieux</span>
                     </div>
                     <p class="text-gray-300 mb-6 max-w-md">
-                        Centre de cours de répétition pour élèves du primaire et du secondaire. Nous nous engageons à offrir un enseignement de qualité pour l’excellence académique.
+                        Centre de cours de répétition pour élèves du primaire et du secondaire, dédié à l’excellence académique.
                     </p>
                     <div class="flex space-x-4">
                         <a href="https://wa.me/+237123456789" class="text-gray-400 hover:text-green-400 transition-colors">
@@ -423,11 +457,8 @@
         <i class="fab fa-whatsapp text-white text-2xl"></i>
     </a>
 
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-
 </body>
 </html>
+
